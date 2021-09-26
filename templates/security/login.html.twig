@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
+
+{% block title %}Page Login User
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 px-lg-5 my-5">
+		<form method="post">
+		
+			{{ macros.messages() }}
+			
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<div class="mb-3">
+				<label for="inputUsername">Username</label>
+				<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+			</div>
+			<div class="mb-3">
+				<label for="inputPassword">Password</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			</div>
+			<button class="btn btn-primary" type="submit">
+				Sign in
+			</button>
+		</form>
+	</div>
+{% endblock %}

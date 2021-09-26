@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
+
+{% block title %}List Products
+{% endblock %}
+
+{% block body %}
+	<div class="container pt-5">
+	
+		{{ macros.messages() }}
+		
+		<div class="mb-3">
+			<a href="{{ path('product.create') }}" class="btn btn-success btn-sm">Create Product</a>
+			<hr/>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Title</th>
+					<th scope="col">Image</th>
+					<th scope="col">Price</th>
+					<th scope="col">Category Name</th>
+					<th scope="col">Op</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+					<tr>
+						<th scope="row">{{ product.id }}</th>
+						<td>{{ product.title }}</td>
+						<td>
+						<img  class="img-fluid img-thumbnail" src="{{ asset('uploads/images/' ~ product.image) }}" width="100">
+						</td>
+						<td>{{ product.price }}</td>
+						<td>{{ product.category }}</td>
+						<td>
+
+							<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+								<a href="{{ path('product.destory', {id: product.id}) }}" class="btn btn-danger">Delete</a>
+								<a href="{{ path('product.index') }}" class="btn btn-primary ">Edit</a>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

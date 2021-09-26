@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
+
+{% block title %}Hello RegistrationController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container pt-5">
+	
+		{{ macros.messages() }}
+		
+		{{ form(regFrom) }}
+	</div>
+
+{% endblock %}

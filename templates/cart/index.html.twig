@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Cart Shopping
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		{% if items | length > 0  %}
+			<div class="row my-5">
+				<div class="col-8">
+					<div class="card">
+						<h5 class="card-header">Cart</h5>
+						<div class="card-body">
+							<table class="table table-bordered my-3">
+								<thead>
+									<tr>
+										<th>Name product</th>
+										<th>Price</th>
+										<th>Quantity</th>
+										<th>Total</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for item in items %}
+										<tr>
+											<td>{{ item.product.title }}</td>
+											<td>
+                                                <span class="fw-bold">
+                                                {{ item.product.price | price }}
+                                                </span>
+                                            </td>
+											<td>{{ item.quantity }}</td>
+											<td>
+                                                <span class="fw-bold">
+                                                {{ ( item.product.price *  item.quantity ) | price }}
+                                                </span>
+											</td>
+											<td>
+												<a href="{{ path('cart.remove' , {'id' : item.product.id}) }}" class="btn btn-danger btn-sm">
+													Delete
+												</a>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="3" class="text-right">Total :</td>
+										<td colspan="2">
+                                            <span class="fw-bold">
+                                             {{ total | price }}
+                                            </span>
+                                        </td>
+									</tr>
+								</tfoot>
+							</table>
+							{# <a href="#" class="btn btn-primary">CheckOut</a> #}
+						</div>
+					</div>
+
+				</div>
+				<div class="col-4">
+                 <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <h5 class="card-header">
+                                        Summery
+                                    </h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>Total : </div>
+                                            <div class="text-right h5 b"> 
+                                                {{ cart_products.getTotal() | price }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <button type="submit" class="btn  btn-primary w-100">
+                                                Check Out
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                
+                </div>
+			</div>
+
+		{% else %}
+			<p>Empty Cart</p>
+		{% endif %}
+	</div>
+{% endblock %}

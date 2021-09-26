@@ -1,0 +1,13 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}From Create Product{% endblock %}
+
+{% block body %}
+	<div class="container pt-5">
+		<div class="mb-3">
+			<a href="{{ path('product.index') }}" class="btn btn-success btn-sm">List Product</a>
+			<hr/>
+		</div>
+		{{ form(productForm) }}
+	</div>
+{% endblock %}
