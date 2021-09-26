@@ -4,7 +4,8 @@
 A shop app with php framework simple (Dashborda Admin, Login, Reg, Cart Shopping, ... )
 
 <p align="center">
-  <img src="Screenshot/img_1.png" width="320" alt="Screenshot" />
+  <img src="Screenshot/img_1.png" alt="Screenshot" width="500"/>
+  <img src="Screenshot/img_2.png" alt="Screenshot" width="500"/>
 </p>
 
 ## Installation
